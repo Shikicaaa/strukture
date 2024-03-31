@@ -4,14 +4,14 @@
 
 
 template <class T,class R>
-class ChainedHashTable :public HashTable<T,R>
+class ChainedHashTable : public HashTable<T,R>
 {
 protected:
 	SLList<HashObject<T, R>>* array;
 public:
 	ChainedHashTable(unsigned int len) {
-		HashTable<T,R>::length = len;
-		HashTable<T,R>::count = 0;
+		length = len;
+		count = 0;
 		array = new SLList<HashObject<T, R>>[len];
 	}
 	~ChainedHashTable() {
