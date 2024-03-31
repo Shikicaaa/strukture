@@ -10,8 +10,8 @@ protected:
 	SLList<HashObject<T, R>>* array;
 public:
 	ChainedHashTable(unsigned int len) {
-		length = len;
-		count = 0;
+		SLList<HashObject<T,R>>::length = len;
+		SLList<HashObject<T, R>>::count = 0;
 		array = new SLList<HashObject<T, R>>[len];
 	}
 	~ChainedHashTable() {
@@ -33,7 +33,21 @@ public:
 	}
 	void insert(HashObject<T, R> obj) {
 		array[h(obj)].addToHead(obj);
-		count++;
+		SLList<HashObject<T, R>>::count++;
 	}
+	void withdraw(HashObject<T, R> obj) {
+		array[h(obj)].deleteEl();
+		SLList<HashObject<T, R>>::count--;
+	}
+	void withdraw(T key) {
+		HashObject<T, R> obj = find(key);
+		withdraw(obj);
+	}
+	HashObject<T, R> find(T key) {
+		HashObject<T,R> obj;
+		unsigned int i = f(key) % SLList<HashObject<T,R>>::length;
+		obj = 
+	}
+
 };
 
