@@ -46,8 +46,10 @@ public:
 	HashObject<T, R> find(T key) {
 		HashObject<T,R> obj;
 		unsigned int i = f(key) % SLList<HashObject<T,R>>::length;
-		obj = 
+		obj = array[i].getHeadEl();
+		while (!(obj.isEqualKey(key)))
+			obj = array[i].getNextEl(obj);
+		return obj;
 	}
-
 };
 
